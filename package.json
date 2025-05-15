@@ -17,5 +17,13 @@
     "ai",
     "agentic",
     "coding"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nicolasdao/setup-roo-memory.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nicolasdao/setup-roo-memory/issues"
+  },
+  "homepage": "https://github.com/nicolasdao/setup-roo-memory#readme"
 }
