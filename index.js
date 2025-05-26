@@ -199,6 +199,16 @@ function manageChangelogFile(targetChangelogFile) {
     }
 }
 
+function manageRoomodesFile(sourceFile, targetFile) {
+    console.log(chalk.cyan('\nProcessing .roomodes file...'));
+    if (!fs.existsSync(sourceFile)) {
+        console.log(chalk.yellow(`Source .roomodes file (${sourceFile}) not found. Skipping.`));
+        return;
+    }
+    fs.copyFileSync(sourceFile, targetFile);
+    console.log(chalk.green('.roomodes file copied.'));
+}
+
 // --- Main Execution ---
 function main() {
     try {
@@ -215,10 +225,12 @@ function main() {
         const targetRooDir = path.join(targetDir, '.roo');
         const targetLlmdocsDir = path.join(targetDir, 'llmdocs');
         const targetChangelogFile = path.join(targetDir, 'CHANGELOG.md');
+        const targetRoomodesFile = path.join(targetDir, '.roomodes');
 
         manageRooFolder(sourceRooDir, targetRooDir);
         manageLlmdocsFolder(sourceLlmdocsDir, targetLlmdocsDir);
         manageChangelogFile(targetChangelogFile);
+        manageRoomodesFile(sourceRoomodesFile, targetRoomodesFile);
 
         console.log(chalk.bold.green('\nSetup complete!'));
 
