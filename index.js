@@ -221,6 +221,7 @@ function main() {
 
         const sourceRooDir = path.join(sourceFilesDir, '.roo');
         const sourceLlmdocsDir = path.join(sourceFilesDir, 'llmdocs');
+        const sourceRoomodesFile = path.join(sourceFilesDir, '.roomodes');
 
         const targetRooDir = path.join(targetDir, '.roo');
         const targetLlmdocsDir = path.join(targetDir, 'llmdocs');
