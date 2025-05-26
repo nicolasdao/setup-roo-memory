@@ -17,7 +17,7 @@ After completing your task, ask the user to confirm whether it is finished.
   ```xml
   <new_task>
      <mode>memory</mode>
-     <message>Update the "llmdocs/CHANGELOG.md" file for this new version NEW_VERSION based on the following detailed summary: DETAILED_CHANGELOG_HERE</message>
+     <message>Update the "CHANGELOG.md" file for this new version NEW_VERSION based on the following detailed summary: DETAILED_CHANGELOG_HERE</message>
   </new_task>
   ```
 
