@@ -1,94 +1,103 @@
-How to maintain `CHANGELOG.md`:
+# CHANGELOG.md Maintenance (for LLMs)
 
-* Ignore files in the following folders:
-   * `./llmdocs/`
+## 1. Scope
+- **Ignore**: any files under `./llmdocs/`.
+- **Track**: source code, config, docs (outside `llmdocs/`), public assets.
 
-* **File structure**:
-  1. **Header** (create if missing):
+## 2. File Structure
 
-     ```markdown
-     # Changelog
+### 2.1 Header (top of file)
+```markdown
+# Changelog
 
-     All notable changes here.  
-     Adheres to SemVer.
-     ```
+All notable changes here.  
+Adheres to SemVer.
+````
 
-  2. **Unreleased section** (create if missing):
+### 2.2 Unreleased (always immediately after header)
 
-     ```markdown
-     ## [Unreleased]
+```markdown
+## [Unreleased]
 
-     ### Added
-     * ...
+<!-- Omit empty headings -->
+### Added
+* 
 
-     ### Changed
-     * ...
+### Changed
+* 
 
-     ### Fixed
-     * ...
+### Fixed
+* 
 
-     ### Removed
-     * ...
-     ```
+### Removed
+* 
+```
 
-  3. **Releases** (append when version is bumped):
+### 2.3 Release Sections (append in chronological order)
 
-     ```markdown
-     ## [X.Y.Z] – YYYY-MM-DD
+```markdown
+## [X.Y.Z] - YYYY-MM-DD
 
-     ### Added
-     * ...
+<!-- Omit empty headings -->
+### Added
+* 
 
-     ### Changed
-     * ...
+### Changed
+* 
 
-     ### Fixed
-     * ...
+### Fixed
+* 
 
-     ### Removed
-     * ...
+### Removed
+* 
 
-     ### Notes
-     * ... (optional)
-     ```
+### Notes  (optional)
+* 
+```
 
-  4. **Link references** (update with each release):
+### 2.4 Link References (bottom of file)
 
-     ```markdown
-     [Unreleased]: repo/compare/vX.Y.Z...HEAD  
-     [X.Y.Z]: repo/releases/tag/vX.Y.Z  
-     ```
+```markdown
+[Unreleased]: https://github.com/<org>/<repo>/compare/vX.Y.Z...HEAD
+[X.Y.Z]:      https://github.com/<org>/<repo>/releases/tag/vX.Y.Z
+```
 
-* Append new entries to `[Unreleased]` under the correct heading.
-* On release:
-  * Copy `[Unreleased]` to a new version section
-  * Clear `[Unreleased]`
-  * Use SemVer rules:
-    * MAJOR = breaking change
-    * MINOR = new feature
-    * PATCH = fix/improvement
-* Always preserve each file’s exact Markdown structure and concise tone.
+## 3. Release Workflow
 
-* **Questions this document must be able to answer**:
+1. **Cut release**: choose new SemVer version.
+2. **Move** non-empty lists from `[Unreleased]` into new `## [X.Y.Z] - YYYY-MM-DD`.
+3. **Clear** moved entries under `[Unreleased]`.
+4. **Update** link refs (replace old `vX.Y.Z`).
+5. **Tag** commit `vX.Y.Z`.
 
-  1. What version are we currently on?
-  2. What new features were added since the last release?
-  3. What bugs or issues were fixed?
-  4. What breaking changes have occurred?
-  5. What dependencies were upgraded or removed?
-  6. What files or modules changed significantly?
-  7. Were there internal refactors or optimizations?
-  8. What architectural changes were introduced?
-  9. Were any features removed or deprecated?
-  10. What API changes were made (new endpoints, params)?
-  11. Were performance improvements made?
-  12. Were tests or CI/CD workflows updated?
-  13. Were environment variables or secrets changed?
-  14. Were there accessibility or UX enhancements?
-  15. Were documentation or developer guides updated?
-  16. Was any experimental code introduced or removed?
-  17. Are there migration steps for this version?
-  18. What git tags/releases match the change?
-  19. Is this release safe to roll back?
-  20. Are there known issues not fixed in this version?
+## 4. SemVer Rules
 
+* **MAJOR** (X.0.0): breaking changes
+* **MINOR** (.Y.0): new features, non-breaking improvements
+* **PATCH** (.0.Z): bug fixes, small tweaks
+
+## 5. Style Guidelines
+
+* Use hyphen `-` (not en-dash) between version and date.
+* Dates in ISO format: `YYYY-MM-DD`.
+* Do **not** log the version bump itself.
+* One bullet per logical change; keep entries concise.
+
+## 6. Release Checklist
+
+* Current version?
+* New features added?
+* Bugs fixed?
+* Breaking changes?
+* Dependencies changed?
+* Significant modules modified?
+* Refactors or optimizations?
+* Architectural/API changes?
+* Performance improvements?
+* CI/CD or test updates?
+* Env var/secret changes?
+* UX/accessibility enhancements?
+* Documentation updates?
+* Migration steps?
+* Rollback safety?
+* Known issues remaining?

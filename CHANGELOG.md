@@ -17,6 +17,21 @@ Adheres to SemVer.
 ### Removed
 * ...
 
+## [0.5.0] – 2025-05-26
+
+### Added
+* ...
+
+### Changed
+* Enhanced `manageRoomodesFile` in [`index.js`](index.js) to intelligently merge the 'memory' custom mode into existing target `.roomodes` files, with robust error handling and appropriate console feedback. Falls back to direct copy if target doesn't exist.
+* Updated `version` in [`package.json`](package.json) from "0.4.0" to "0.5.0".
+
+### Fixed
+* ...
+
+### Removed
+* ...
+
 ## [0.4.0] – 2025-05-26
 
 ### Added
@@ -36,5 +51,6 @@ Adheres to SemVer.
 ### Removed
 * ...
 
-[Unreleased]: repo/compare/v0.4.0...HEAD  
+[Unreleased]: repo/compare/v0.5.0...HEAD
+[0.5.0]: repo/releases/tag/v0.5.0
 [0.4.0]: repo/releases/tag/v0.4.0

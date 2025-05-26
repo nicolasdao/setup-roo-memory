@@ -201,12 +201,104 @@ function manageChangelogFile(targetChangelogFile) {
 
 function manageRoomodesFile(sourceFile, targetFile) {
     console.log(chalk.cyan('\nProcessing .roomodes file...'));
+
     if (!fs.existsSync(sourceFile)) {
         console.log(chalk.yellow(`Source .roomodes file (${sourceFile}) not found. Skipping.`));
         return;
     }
-    fs.copyFileSync(sourceFile, targetFile);
-    console.log(chalk.green('.roomodes file copied.'));
+
+    const newMemoryMode = {
+        "slug": "memory",
+        "name": "🧠 Memory",
+        "roleDefinition": "You are a technical writer specializing in creating and maintaining comprehensive documentation based on the project's codebase and structure.",
+        "groups": [
+            "read",
+            ["edit", {
+                "fileRegex": "\\\\.md$",
+                "description": "Markdown files only, suitable for README.md and other documentation."
+            }]
+        ],
+        "customInstructions": "Using the changes made by the task that called you, update all the relevant files under the 'docs' folder located in this project's root directory."
+    };
+
+    if (fs.existsSync(targetFile)) {
+        console.log(chalk.yellow(`Target .roomodes file (${targetFile}) already exists. Attempting to merge...`));
+        let targetContent;
+        try {
+            targetContent = fs.readFileSync(targetFile, 'utf8');
+        } catch (readError) {
+            console.error(chalk.red(`Error reading target .roomodes file (${targetFile}): ${readError.message}. Proceeding with overwrite.`));
+            try {
+                fs.copyFileSync(sourceFile, targetFile);
+                console.log(chalk.green(`Overwrote target .roomodes file with source due to read error.`));
+            } catch (copyErr) {
+                console.error(chalk.red(`Failed to overwrite target .roomodes file (${targetFile}) after read error: ${copyErr.message}`));
+            }
+            return;
+        }
+
+        let targetJson;
+        try {
+            targetJson = JSON.parse(targetContent);
+        } catch (parseError) {
+            console.error(chalk.red(`Error parsing target .roomodes file (${targetFile}): ${parseError.message}. Proceeding with overwrite.`));
+            try {
+                fs.copyFileSync(sourceFile, targetFile);
+                console.log(chalk.green(`Overwrote target .roomodes file with source due to parsing error.`));
+            } catch (copyErr) {
+                console.error(chalk.red(`Failed to overwrite target .roomodes file (${targetFile}) after parse error: ${copyErr.message}`));
+            }
+            return;
+        }
+
+        if (typeof targetJson !== 'object' || targetJson === null || Array.isArray(targetJson)) {
+            console.error(chalk.red(`Target .roomodes content in ${targetFile} is not a JSON object. Proceeding with overwrite.`));
+            try {
+                fs.copyFileSync(sourceFile, targetFile);
+                console.log(chalk.green(`Overwrote target .roomodes file with source as content was not a JSON object.`));
+            } catch (copyErr) {
+                console.error(chalk.red(`Failed to overwrite target .roomodes file (${targetFile}) after content validation error: ${copyErr.message}`));
+            }
+            return;
+        }
+
+        // Ensure customModes is an array
+        if (!Array.isArray(targetJson.customModes)) {
+            if (targetJson.hasOwnProperty('customModes')) { // It existed but was not an array
+                console.warn(chalk.yellow(`Target .roomodes file (${targetFile}) has an invalid customModes property (was ${typeof targetJson.customModes}). Initializing as empty array.`));
+            }
+            // If customModes was missing or invalid, initialize it as an empty array.
+            targetJson.customModes = [];
+        }
+        
+        const customModesArray = targetJson.customModes; // Work with the (potentially initialized) array
+
+        const memoryModeExists = customModesArray.some(mode => mode && typeof mode.slug === 'string' && mode.slug === "memory");
+
+        if (memoryModeExists) {
+            console.warn(chalk.yellow("A custom mode with slug 'memory' already exists in the target .roomodes file."));
+            // Do not modify the file further if the mode already exists,
+            // even if customModes was re-initialized due to being malformed.
+            return;
+        } else {
+            customModesArray.push(newMemoryMode);
+            try {
+                fs.writeFileSync(targetFile, JSON.stringify(targetJson, null, 2), 'utf8');
+                console.log(chalk.green(`Added new custom mode 'memory' to the target .roomodes file (${targetFile}).`));
+            } catch (writeError) {
+                console.error(chalk.red(`Error writing updated .roomodes file (${targetFile}): ${writeError.message}.`));
+                // As per instructions, no explicit fallback to overwrite here if the write itself fails.
+            }
+        }
+    } else {
+        // Target file does not exist, proceed with original behavior
+        try {
+            fs.copyFileSync(sourceFile, targetFile);
+            console.log(chalk.green(`.roomodes file copied from ${sourceFile} to ${targetFile} as target did not exist.`));
+        } catch (copyError) {
+            console.error(chalk.red(`Error copying source .roomodes file (${sourceFile}) to ${targetFile}: ${copyError.message}`));
+        }
+    }
 }
 
 // --- Main Execution ---
