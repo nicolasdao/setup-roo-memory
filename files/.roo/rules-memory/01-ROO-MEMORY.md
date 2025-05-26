@@ -4,11 +4,11 @@
 
 Based on all the changes made by the previous task:
 
-0. **Respect explicit update instructions**  
+1. **Respect explicit update instructions**  
    - If the previous prompt explicitly names one or more of the six `llmdocs/` files to update, **only** modify those specified file(s) and do not touch any others.  
    - If no files are explicitly mentioned, determine which files to update using the rules below.
 
-1. **Update the relevant files in `llmdocs/` in this exact order**  
+2. **Update the relevant files in `llmdocs/` in this exact order**  
    1. `STACK.md`  
       - Only update if the tech stack changed.  
       - To update, first consult `llmdocs/HOW_TO_STACK.md`.  
@@ -16,7 +16,7 @@ Based on all the changes made by the previous task:
       - Only update if source files were added, modified, or deleted.  
       - To update, first consult `llmdocs/HOW_TO_FILES.md`.  
    3. `FEATURES.md`  
-      - Only update if features were added, modified, or removed (bug fixes alone do not count unless they introduced new features). 
+      - Only update if features were added, modified, or removed (bug fixes alone do not count unless they introduced new features)  
       - To update, first consult `llmdocs/HOW_TO_FEATURES.md`.  
    4. `LOOK_AND_FEEL.md`  
       - Only update if visual or UX aspects changed.  
