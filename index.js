@@ -214,7 +214,7 @@ function manageRoomodesFile(sourceFile, targetFile) {
         "groups": [
             "read",
             ["edit", {
-                "fileRegex": "\\\\.md$",
+                "fileRegex": "\\.md$",
                 "description": "Markdown files only, suitable for README.md and other documentation."
             }]
         ],

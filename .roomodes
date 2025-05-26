@@ -1,17 +1,20 @@
 {
-	"customModes": [
-		{
-			"slug": "memory",
-			"name": "🧠 Memory",
-			"roleDefinition": "You are a technical writer specializing in creating and maintaining comprehensive documentation based on the project's codebase and structure.",
-			"groups": [
-				"read",
-				["edit", {
-					"fileRegex": "\\.md$",
-					"description": "Markdown files only, suitable for README.md and other documentation."
-				}]
-			],
-			"customInstructions": "Using the changes made by the task that called you, update all the relevant files under the 'docs' folder located in this project's root directory."
-		}
-	]
+  "customModes": [
+    {
+      "slug": "memory",
+      "name": "🧠 Memory",
+      "roleDefinition": "You are a technical writer specializing in creating and maintaining comprehensive documentation based on the project's codebase and structure.",
+      "groups": [
+        "read",
+        [
+          "edit",
+          {
+            "fileRegex": "\\\\.md$",
+            "description": "Markdown files only, suitable for README.md and other documentation."
+          }
+        ]
+      ],
+      "customInstructions": "Using the changes made by the task that called you, update all the relevant files under the 'docs' folder located in this project's root directory."
+    }
+  ]
 }

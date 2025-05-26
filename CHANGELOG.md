@@ -17,6 +17,20 @@ Adheres to SemVer.
 ### Removed
 * ...
 
+## [0.6.0] – 2025-05-26
+
+### Added
+* ...
+
+### Changed
+* ...
+
+### Fixed
+* Fixed an incorrect `fileRegex` value in the `.roomodes` for the custom mode `memory`.
+
+### Removed
+* ...
+
 ## [0.5.0] – 2025-05-26
 
 ### Added
