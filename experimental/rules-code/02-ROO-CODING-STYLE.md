@@ -1,3 +1,7 @@
+## [2] Instruction: code-coding-style
+
+=== BEGIN instruction: code-coding-style ===
+
 Always follow these style and structural guidelines:
 
 #### **Code Style**
@@ -18,3 +22,7 @@ Always follow these style and structural guidelines:
   * Move related logic into **smaller files** with clear responsibilities
 
 Stay disciplined with structure and naming. The goal is clarity, maintainability, and scalability.
+
+=== END instruction: code-coding-style ===
+
+---INSTRUCTION-END---

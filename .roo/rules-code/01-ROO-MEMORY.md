@@ -1,18 +1,20 @@
-After completing your task and before returning results:
+## [1] Instruction: code-memory-mgmt
 
-1. **Update the relevant files in `./llmdocs/`**:
+If explicitly instructed **not** to update the Roo memory (e.g., `DO NOT UPDATE THE ROO MEMORY`), skip this instruction below. Otherwise, execute it:
 
-   * `./llmdocs/FILES.md`: When adding, modifying, or deleting source files.
-   * `./llmdocs/FEATURES.md`: When adding, modifying, or removing features.
-   * `./llmdocs/STACK.md`: When the tech stack changes.
-   * `./llmdocs/LOOK_AND_FEEL.md`: When visual or UX aspects change.
-   * `./llmdocs/IMPORTANT_NOTES.md`: When uncovering key maintenance or stability insights.
+=== BEGIN instruction: code-memory-mgmt ===
 
-2. **Read `llmdocs/DOC_MAINTENANCE_GUIDE.md` before editing any file**. It contains formatting and update instructions.
+After you’ve completed your primary task but before you return the final results, compile a detailed list of every change you made. Then, invoke a new `memory` task using this exact template (substituting `CHANGES_SUMMARY_HERE` with your change log):
 
-3. **Add a `DOC_CHANGES` section** in your final response:
+```xml
+<new_task>
+   <mode>memory</mode>
+   <message>Update the files under `llmdocs` based on the following changes summary: CHANGES_SUMMARY_HERE</message>
+</new_task>
+```
 
-   * List each `./llmdocs/` file you modified.
-   * For each file, provide a bullet explaining what changed.
+If the response to that memory task includes a `DOC_CHANGES` section, embed that entire section directly into your response to the original (parent) task.
 
-> 💡 If no `./llmdocs/` files were changed, omit the `DOC_CHANGES` section.
+=== END instruction: code-memory-mgmt ===
+
+---INSTRUCTION-END---
