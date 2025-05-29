@@ -5,17 +5,26 @@ Adheres to SemVer.
 
 ## [Unreleased]
 
+<!-- Omit empty headings -->
 ### Added
-* ...
+* 
 
 ### Changed
-* ...
+* 
 
 ### Fixed
-* ...
+* 
 
 ### Removed
-* ...
+* 
+
+## [0.6.1] - 2025-05-29
+
+### Changed
+* Configured ESLint for the project using the modern [`eslint.config.js`](eslint.config.js:1) format, compatible with ESLint v9+. This replaced the older [`.eslintrc.json`](.eslintrc.json:0) format and was updated to use CommonJS syntax to prevent Node.js warnings.
+
+### Fixed
+* Resolved a `no-prototype-builtins` linting error in [`index.js`](index.js:281) by updating `hasOwnProperty` to `Object.hasOwn()`.
 
 ## [0.6.0] – 2025-05-26
 
@@ -65,6 +74,8 @@ Adheres to SemVer.
 ### Removed
 * ...
 
-[Unreleased]: repo/compare/v0.5.0...HEAD
-[0.5.0]: repo/releases/tag/v0.5.0
-[0.4.0]: repo/releases/tag/v0.4.0
+[Unreleased]: repo/compare/v0.6.1...HEAD
+[0.6.1]:      repo/releases/tag/v0.6.1
+[0.6.0]:      repo/releases/tag/v0.6.0
+[0.5.0]:      repo/releases/tag/v0.5.0
+[0.4.0]:      repo/releases/tag/v0.4.0

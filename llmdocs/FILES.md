@@ -1,0 +1,103 @@
+# Files
+
+## Table of Contents
+- [Overview](#overview)
+- [File Structure](#file-structure)
+- [File Details](#file-details)
+
+## Overview
+This document provides an overview of the project's file structure, detailing the purpose and dependencies of key files.
+
+## File Structure
+
+```
+.
+├── .gitignore
+├── .roomodes
+├── CHANGELOG.md
+├── eslint.config.js
+├── index.js
+├── LICENSE.md
+├── package-lock.json
+├── package.json
+├── README.md
+├── experimental/
+│   ├── rules-code/02-ROO-CODING-STYLE.md
+│   └── rules-orchestrator/02-ROO-CHANGELOG-ASK-VERSION.md
+└── files/
+    └── .roomodes
+```
+
+## File Details
+
+### `.gitignore`
+- **Type**: Config
+- **Creation date**: Inferred
+- **Description**: Specifies intentionally untracked files that Git should ignore.
+- **Dependencies**: Git
+
+### `.roomodes`
+- **Type**: Config
+- **Creation date**: Inferred
+- **Description**: Configuration file for Roo modes.
+- **Dependencies**: Roo
+
+### `CHANGELOG.md`
+- **Type**: Documentation
+- **Creation date**: Inferred
+- **Description**: Records all notable changes to the project.
+- **Dependencies**: None
+
+### `eslint.config.js`
+- **Type**: Config
+- **Creation date**: Inferred
+- **Description**: ESLint flat configuration file (v9+) for linting JavaScript code, configured to use CommonJS syntax to prevent Node.js module type warnings.
+- **Dependencies**: ESLint
+
+### `index.js`
+- **Type**: Utility
+- **Creation date**: Inferred
+- **Description**: Main application logic and entry point, updated to use `Object.hasOwn()` for safer property checks and to fix the `no-prototype-builtins` ESLint error.
+- **Dependencies**: Node.js, various internal modules
+
+### `LICENSE.md`
+- **Type**: Documentation
+- **Creation date**: Inferred
+- **Description**: Contains the licensing information for the project.
+- **Dependencies**: None
+
+### `package-lock.json`
+- **Type**: Data
+- **Creation date**: Inferred
+- **Description**: Records the exact dependency tree that was generated.
+- **Dependencies**: `package.json`, npm
+
+### `package.json`
+- **Type**: Config
+- **Creation date**: Inferred
+- **Description**: Defines project metadata and manages dependencies.
+- **Dependencies**: npm
+
+### `README.md`
+- **Type**: Documentation
+- **Creation date**: Inferred
+- **Description**: Provides a general overview and introduction to the project.
+- **Dependencies**: None
+
+### `experimental/rules-code/02-ROO-CODING-STYLE.md`
+- **Type**: Documentation
+- **Creation date**: Inferred
+- **Description**: Defines coding style rules for the Roo code mode.
+- **Dependencies**: Roo
+
+### `experimental/rules-orchestrator/02-ROO-CHANGELOG-ASK-VERSION.md`
+- **Type**: Documentation
+- **Creation date**: Inferred
+- **Description**: Defines rules for the Roo orchestrator mode related to changelog versioning.
+- **Dependencies**: Roo
+
+### `files/.roomodes`
+- **Type**: Config
+- **Creation date**: Inferred
+- **Description**: Configuration file for Roo modes within the `files` directory.
+- **Dependencies**: Roo
