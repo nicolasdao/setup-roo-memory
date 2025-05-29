@@ -6,6 +6,9 @@
   "bin": {
     "setup-roo-memory": "./index.js"
   },
+  "scripts": {
+    "lint": "eslint index.js --fix"
+  },
   "author": "Nicolas Dao <nic@cloudlesslabs.com>",
   "license": "MIT",
   "dependencies": {
@@ -25,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/nicolasdao/setup-roo-memory/issues"
   },
-  "homepage": "https://github.com/nicolasdao/setup-roo-memory#readme"
+  "homepage": "https://github.com/nicolasdao/setup-roo-memory#readme",
+  "devDependencies": {
+    "eslint": "^9.27.0"
+  }
 }

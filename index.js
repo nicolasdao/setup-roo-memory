@@ -278,7 +278,7 @@ function manageRoomodesFile(sourceFile, targetFile) {
 
         // Ensure customModes is an array
         if (!Array.isArray(targetJson.customModes)) {
-            if (targetJson.hasOwnProperty('customModes')) { // It existed but was not an array
+            if (Object.hasOwn(targetJson, 'customModes')) { // It existed but was not an array
                 console.warn(chalk.yellow(`Target .roomodes file (${targetFile}) has an invalid customModes property (was ${typeof targetJson.customModes}). Initializing as empty array.`));
             }
             // If customModes was missing or invalid, initialize it as an empty array.
