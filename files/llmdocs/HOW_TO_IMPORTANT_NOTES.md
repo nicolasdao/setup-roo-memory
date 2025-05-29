@@ -4,32 +4,44 @@ How to maintain `IMPORTANT_NOTES.md`:
 
   * TOC
   * For each note:
-
     * Creation date
     * Description (context and rationale)
     * Files (relevant roles)
 
 * **If present**, update similarly (add, edit, or remove).
 
-* **Questions this document must be able to answer**:
+* **Guidelines**:
 
-  1. Are there known limitations or architectural tradeoffs?
-  2. Are any parts of the system brittle or hard to refactor?
-  3. Are there sections of code that must not be deleted?
-  4. What design decisions had hidden implications?
-  5. What legacy elements must be preserved (and why)?
-  6. Are there manual steps required during deployment?
-  7. What files are sensitive to ordering or loading sequences?
-  8. What parts of the app were hard to debug historically?
-  9. What features are blocked by tech constraints?
-  10. Are there gotchas when running locally vs in prod?
-  11. Are there any dev-only hacks or monkey patches?
-  12. What requires elevated permissions to change?
-  13. What must be coordinated across teams before altering?
-  14. Are there race conditions or async pitfalls?
-  15. Are there third-party services that often break?
-  16. What areas are planned to be replaced or removed soon?
-  17. What file should always be opened first by new devs?
-  18. Are there components or APIs in experimental status?
-  19. What things break silently if misconfigured?
-  20. Are there pending decisions that affect the architecture?
+You are an expert technical writer. Your job is to update the **Engineering Knowledge Base** using a list of recent project changes. Your goal is to **capture key insights and lessons learned** that will help the team make better future decisions and avoid past mistakes.
+
+For each relevant insight:
+
+* **Create a new section** if it's not documented yet.
+* **Update an existing section** if it adds meaningful context.
+* **Delete outdated sections** if they’re no longer true or relevant.
+
+Keep entries clear, actionable, and concise.
+
+---
+
+### 📌 Example Entry Format
+
+```
+## Lesson Learned: Async Initialization Race Conditions
+
+In the recent refactor of the startup process, we encountered a race condition when async modules were initialized out of order. This led to intermittent failures in production only.
+
+**Mitigation:** Added explicit init sequencing using await barriers.
+
+**Takeaway:** When introducing async module loading, define a strict initialization contract to avoid nondeterministic failures.
+```
+
+---
+
+### 🚨 Edge Case Handling
+
+* If new and old insights conflict, highlight the contradiction.
+* If removing a section, explain briefly why it's no longer valid.
+
+---
+

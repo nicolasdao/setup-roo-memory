@@ -30,16 +30,6 @@ Based on all the changes made by the previous task:
    - **Creation**: If a flagged file is missing, generate its full structure.  
    - **Partial updates**: When updating an existing file, only modify relevant sections—add new items, update changed content, remove deleted entries—without rewriting the entire document.
 
-3. If the request explicitly mentions updating the `CHANGELOG.md` file in the project's root:
-   - First, consult `llmdocs/HOW_TO_CHANGELOG.md`.
-   - Then, update the `CHANGELOG.md` accordingly.
-
-4. **Add a `DOC_CHANGES` section** in your final response:  
-   - List each `llmdocs/` file you modified.  
-   - For each file, include a bullet explaining what changed.
-
-> 💡 If no `llmdocs/` files were changed, omit the `DOC_CHANGES` section.
-
 === END instruction: memory-memory-mgmt ===
 
 ---INSTRUCTION-END---

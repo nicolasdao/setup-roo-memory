@@ -221,6 +221,20 @@ function manageRoomodesFile(sourceFile, targetFile) {
         "customInstructions": "Using the changes made by the task that called you, update all the relevant files under the 'docs' folder located in this project's root directory."
     };
 
+    const newChangelogMode = {
+        "slug": "changelog",
+        "name": "📝 Changelog",
+        "roleDefinition": "You are a technical writer focused on maintaining an accurate and concise changelog based on the most recent changes.",
+        "groups": [
+            "read",
+            ["edit", {
+                "fileRegex": "CHANGELOG.md",
+                "description": "CHANGELOG Markdown file"
+            }]
+        ],
+        "customInstructions": "Using the current project version and the latest changes from the triggering task, determine the appropriate SemVer version bump and apply changelog best practices to summarize and document the updates."
+    };
+
     if (fs.existsSync(targetFile)) {
         console.log(chalk.yellow(`Target .roomodes file (${targetFile}) already exists. Attempting to merge...`));
         let targetContent;
@@ -279,12 +293,27 @@ function manageRoomodesFile(sourceFile, targetFile) {
             console.warn(chalk.yellow("A custom mode with slug 'memory' already exists in the target .roomodes file."));
             // Do not modify the file further if the mode already exists,
             // even if customModes was re-initialized due to being malformed.
-            return;
         } else {
             customModesArray.push(newMemoryMode);
+        }
+        
+        const changelogModeExists = customModesArray.some(mode => mode && typeof mode.slug === 'string' && mode.slug === "changelog");
+
+        if (changelogModeExists) {
+            console.warn(chalk.yellow("A custom mode with slug 'changelog' already exists in the target .roomodes file."));
+            // Do not modify the file further if the mode already exists,
+            // even if customModes was re-initialized due to being malformed.
+        } else {
+            customModesArray.push(newChangelogMode);
+        }
+
+        if (!memoryModeExists || !changelogModeExists) {
+            const msg = !memoryModeExists && !changelogModeExists
+                ? `new custom modes 'memory' and 'changelog'` : !memoryModeExists
+                    ? `new custom mode 'memory'` : `new custom mode 'changelog'`
             try {
                 fs.writeFileSync(targetFile, JSON.stringify(targetJson, null, 2), 'utf8');
-                console.log(chalk.green(`Added new custom mode 'memory' to the target .roomodes file (${targetFile}).`));
+                console.log(chalk.green(`Added ${msg} to the target .roomodes file (${targetFile}).`));
             } catch (writeError) {
                 console.error(chalk.red(`Error writing updated .roomodes file (${targetFile}): ${writeError.message}.`));
                 // As per instructions, no explicit fallback to overwrite here if the write itself fails.

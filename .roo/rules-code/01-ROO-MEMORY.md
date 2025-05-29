@@ -2,16 +2,15 @@
 
 === BEGIN instruction: code-memory-mgmt ===
 
-After you’ve completed your primary task but before you return the final results, compile a detailed list of every change you made. Then, invoke a new `memory` task using this exact template (substituting `CHANGES_SUMMARY_HERE` with your change log):
+Before returning your final results, compile a detailed summary of all changes made. This should include:
 
-```xml
-<new_task>
-   <mode>memory</mode>
-   <message>Update the files under `llmdocs` based on the following changes summary: CHANGES_SUMMARY_HERE</message>
-</new_task>
-```
+* File modifications (if any)
+* Feature updates (if any)
+* UI/UX changes (if any)
+* Stack or architecture changes (if any)
+* Key insights or lessons learned that could improve future decisions or avoid past mistakes (if any)
 
-If the response to that memory task includes a `DOC_CHANGES` section, embed that entire section directly into your response to the original (parent) task.
+Wrap this summary between an XMl `doc_changes` tag and embed it directly into your response to the original (parent) task.
 
 === END instruction: code-memory-mgmt ===
 
