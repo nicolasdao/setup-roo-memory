@@ -7,16 +7,30 @@ Adheres to SemVer.
 
 <!-- Omit empty headings -->
 ### Added
-* 
+*
 
 ### Changed
-* 
+*
 
 ### Fixed
-* 
+*
 
 ### Removed
-* 
+*
+
+## [0.7.0] - 2025-05-29
+
+### Added
+* Added a prominent **WARNING** to [`README.md`](README.md:1) advising users to manually configure the AI models for the new `memory` and `changelog` custom modes to realize potential cost savings.
+
+### Changed
+* Updated [`README.md`](README.md:1) to document the new `🧠 Memory` and `📝 Changelog` custom modes, their purpose (leveraging cost-effective AI models for specialized tasks), and the updated project workflow where documentation generation now precedes [`CHANGELOG.md`](CHANGELOG.md:0) updates.
+
+### Fixed
+*
+
+### Removed
+*
 
 ## [0.6.1] - 2025-05-29
 
@@ -74,7 +88,8 @@ Adheres to SemVer.
 ### Removed
 * ...
 
-[Unreleased]: repo/compare/v0.6.1...HEAD
+[Unreleased]: repo/compare/v0.7.0...HEAD
+[0.7.0]:      repo/releases/tag/v0.7.0
 [0.6.1]:      repo/releases/tag/v0.6.1
 [0.6.0]:      repo/releases/tag/v0.6.0
 [0.5.0]:      repo/releases/tag/v0.5.0

@@ -1,5 +1,7 @@
 # setup-roo-memory
 
+**WARNING:** Do not forget to manually set up the correct model for the new `memory` and `changelog` custom modes. The initial purpose of these two modes was to use cheaper models for these specialized tasks.
+
 This is an npx utility that helps set up extra documentation files that act as basic memory for your coding project in VS Code when using Roo Code (https://roocode.com/) as your agentic coding tool. This project is inspired by the `Memory Bank Project by GreatScottyMac` (https://github.com/GreatScottyMac/roo-code-memory-bank). To learn more about why I created this project instead of using that one, please refer to the `Why this project` section.
 
 To use it, simply run `npx setup-roo-memory` in your project's root.
@@ -17,10 +19,13 @@ To use it, simply run `npx setup-roo-memory` in your project's root.
 *   Creates additional custom rules for the standard Roo modes (Orchestrator, Architect, Code, and Ask). This is done via the hidden folder `.roo/` which simply defines additional system prompts for each of the standard Roo modes. These additional system prompts instruct each agent to either read the documentation in the `llmdocs/` folder or to maintain it when they have finished doing their work. To learn more about the ability to customize Roo's custom modes, please refer to the official Roo doc at https://docs.roocode.com/features/custom-modes#mode-specific-instructions-via-filesdirectories.
 *   Creates a new `llmdocs/` folder to store the documentation that Roo will maintain on your behalf.
 *   Creates a new `./CHANGELOG.md` file in the project's root if it does not exist yet. If it already exists, nothing happens. This file keeps track of the changes in each version of your project.
+*   Creates two new custom modes via the `.roomodes` file. For more information on custom modes, refer to the official Roo documentation: [`https://docs.roocode.com/features/custom-modes`](https://docs.roocode.com/features/custom-modes). The new modes are:
+    *   `🧠 Memory`: Manages the memory files, i.e., the auto documentation for your project.
+    *   `📝 Changelog`: Maintains the `CHANGELOG.md`.
 
 ## What this will do to your agentic coder
 
-The extra system prompts located in the `.roo` folder will instruct each standard Roo mode to read the documentation inside the `./llmdocs/` folder to learn about the context of your project and will also maintain this documentation when they are done with their changes. When the Orchestrator is done with all its changes (all sub-tasks completed) and you have explicitly confirmed all is good (the Orchestrator will ask you), then the Orchestrator will bump the version of your project using the SemVer convention (https://semver.org/) and then summarize all the changes to document them in the `./CHANGELOG.md` file. This is kind of cool as typical tools usually use git diff to populate the changelog while an LLM will be better at really detailing changes and be better at automatically determining how to bump the version (major vs minor vs patch).
+The extra system prompts located in the `.roo` folder will instruct each standard Roo mode to read the documentation inside the `./llmdocs/` folder to learn about the context of your project and will also maintain this documentation when they are done with their changes. When the Orchestrator is done with all its changes (all sub-tasks completed) and you have explicitly confirmed all is good (the Orchestrator will ask you), then the Orchestrator will first summarize all changes made, then update all documentation files under the `./llmdocs/` folder, then bump the version of your project using the SemVer convention (https://semver.org/), and finally document the summarized changes in the `./CHANGELOG.md` file. This is kind of cool as typical tools usually use git diff to populate the changelog while an LLM will be better at really detailing changes and be better at automatically determining how to bump the version (major vs minor vs patch).
 
 ## Why this project
 
@@ -30,7 +35,7 @@ This project is inspired by the `Memory Bank Project by GreatScottyMac` (https:/
 *   The finding that its documentation could be improved (something that might be fixed today).
 *   The personal preference for a different memory structure, as experimentation showed my own file structure worked better for my projects.
 *   The point that `set-roo-memory` uses a more idiomatic Roo way to add system prompts to existing modes.
-*   The point that `set-roo-memory` adds a custom `memory` mode for focused memory management and potential cost optimization.
+*   The point that `set-roo-memory` adds custom `memory` and `changelog` modes for focused memory management, changelog maintenance, and potential cost optimization. These two custom modes can be associated with a cheaper model (e.g., `gemini-flash`) than the one used by the `code` custom mode (e.g., `gemini-pro`).
 
 This is a matter of taste and opinion, and if you find that there is a better way to instruct your LLM, please go ahead. You can easily do that by following the instructions in the `How to customize the memory behavior?` section.
 
@@ -38,7 +43,7 @@ This is a matter of taste and opinion, and if you find that there is a better wa
 
 If you feel you have a better way to document changes, then it is very easy to change the instructions for each Roo mode. Simply open the `.roo` folder and under each custom mode folder (e.g., `rules-code` for the Code mode), either rewrite the system prompt in the `01-ROO-MEMORY.md` file, or if you simply want to add more details, add a new file (name it whatever you want, but just keep in mind that the way the system prompts are concatenated is by using the files in alphabetical order). As for the files under the `llmdocs/` folder, the [`DOC_MAINTENANCE_GUIDE.md`](files/llmdocs/DOC_MAINTENANCE_GUIDE.md:1) contains the instructions the LLM must follow to manage all that content. If you feel you want to structure the documentation differently, simply update that document.
 
-As for the new `🧠 Memory` custom mode, it was created and configured via the `.roomodes` file. To learn more about this file, please refer to the original Roo Code documentation at https://docs.roocode.com/features/custom-modes.
+As for the new `🧠 Memory` and `📝 Changelog` custom modes, they were created and configured via the `.roomodes` file. The customization mechanism for the `changelog` mode is similar to the `memory` mode. To learn more about this file, please refer to the original Roo Code documentation at https://docs.roocode.com/features/custom-modes.
 
 ## LICENSE
 

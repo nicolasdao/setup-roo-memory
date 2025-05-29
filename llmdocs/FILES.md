@@ -24,8 +24,9 @@ This document provides an overview of the project's file structure, detailing th
 ├── experimental/
 │   ├── rules-code/02-ROO-CODING-STYLE.md
 │   └── rules-orchestrator/02-ROO-CHANGELOG-ASK-VERSION.md
-└── files/
-    └── .roomodes
+├── files/
+│   └── .roomodes
+└── llmdocs/
 ```
 
 ## File Details
@@ -81,7 +82,7 @@ This document provides an overview of the project's file structure, detailing th
 ### `README.md`
 - **Type**: Documentation
 - **Creation date**: Inferred
-- **Description**: Provides a general overview and introduction to the project.
+- **Description**: Provides a general overview and introduction to the project, recently updated.
 - **Dependencies**: None
 
 ### `experimental/rules-code/02-ROO-CODING-STYLE.md`
@@ -101,3 +102,75 @@ This document provides an overview of the project's file structure, detailing th
 - **Creation date**: Inferred
 - **Description**: Configuration file for Roo modes within the `files` directory.
 - **Dependencies**: Roo
+
+### `llmdocs/CHANGELOG.md`
+- **Type**: Documentation
+- **Creation date**: Inferred
+- **Description**: Records all notable changes to the project's documentation.
+- **Dependencies**: None
+
+### `llmdocs/FEATURES.md`
+- **Type**: Documentation
+- **Creation date**: Inferred
+- **Description**: Documents the features of the project.
+- **Dependencies**: None
+
+### `llmdocs/FILES.md`
+- **Type**: Documentation
+- **Creation date**: Inferred
+- **Description**: Provides an overview of the project's file structure.
+- **Dependencies**: None
+
+### `llmdocs/HOW_TO_CHANGELOG.md`
+- **Type**: Documentation
+- **Creation date**: Inferred
+- **Description**: Instructions on how to maintain `CHANGELOG.md`.
+- **Dependencies**: None
+
+### `llmdocs/HOW_TO_FEATURES.md`
+- **Type**: Documentation
+- **Creation date**: Inferred
+- **Description**: Instructions on how to maintain `FEATURES.md`.
+- **Dependencies**: None
+
+### `llmdocs/HOW_TO_FILES.md`
+- **Type**: Documentation
+- **Creation date**: Inferred
+- **Description**: Instructions on how to maintain `FILES.md`.
+- **Dependencies**: None
+
+### `llmdocs/HOW_TO_IMPORTANT_NOTES.md`
+- **Type**: Documentation
+- **Creation date**: Inferred
+- **Description**: Instructions on how to maintain `IMPORTANT_NOTES.md`.
+- **Dependencies**: None
+
+### `llmdocs/HOW_TO_LOOK_AND_FEEL.md`
+- **Type**: Documentation
+- **Creation date**: Inferred
+- **Description**: Instructions on how to maintain `LOOK_AND_FEEL.md`.
+- **Dependencies**: None
+
+### `llmdocs/HOW_TO_STACK.md`
+- **Type**: Documentation
+- **Creation date**: Inferred
+- **Description**: Instructions on how to maintain `STACK.md`.
+- **Dependencies**: None
+
+### `llmdocs/IMPORTANT_NOTES.md`
+- **Type**: Documentation
+- **Creation date**: Inferred
+- **Description**: Contains important notes regarding maintenance and stability.
+- **Dependencies**: None
+
+### `llmdocs/LOOK_AND_FEEL.md`
+- **Type**: Documentation
+- **Creation date**: Inferred
+- **Description**: Documents visual and UX aspects of the project.
+- **Dependencies**: None
+
+### `llmdocs/STACK.md`
+- **Type**: Documentation
+- **Creation date**: Inferred
+- **Description**: Outlines the core technologies and architectural components of the project.
+- **Dependencies**: None
